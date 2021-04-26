@@ -15,7 +15,7 @@ import os
 from pathlib import Path
 
 #########heroku#########
-import django_heroku
+
 #####end#########
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -179,7 +179,7 @@ STATICFILES_DIRS = [STATIC_DIR, ]
 STATIC_URL = '/static/'
 #end seg
 #for heroku
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
 
 # STATIC_URL = '/static/'
 
@@ -205,17 +205,8 @@ LOGIN_URL = 'accounts:login'
 LOGIN_REDIRECT_URL = 'hospital:index'
 
 # Activate Django-Heroku.
-django_heroku.settings(locals())
 
 #for postgres-database
 
 # NEW1
-import psycopg2
-DATABASE_URL = os.environ['DATABASE_URL']
-
-conn = psycopg2.connect(DATABASE_URL, sslmode='require')
-
-
-import dj_database_url
-DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
 
