@@ -1,0 +1,88 @@
+{% extends 'hospital/base.html' %}
+
+{% load static %}
+
+{% block title %}Vaccine{{ block.super }}{% endblock title %}
+
+{% load crispy_forms_tags %}
+
+{% block javascripts %}
+<title>Bootstrap Interactive Alerts</title>
+  <!-- bootstrap css styles -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- bootstrap javascript for interactivity -->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+{% endblock javascripts %}
+
+
+{% block content %}
+  <div class="container">
+    <h1 class="page-header">Vaccine Applied</h1>
+
+    <!-- BUTTON TO TRIGGER THE ACTION -->
+    <p>
+      <button type="button"
+              class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+        <i class="fas fa-dna"></i>
+        Apply New Vaccine
+      </button>
+    </p>
+
+    <div class="table-responsive">
+    <table class="table" id="treatment-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>date</th>
+          <th>vaccine</th>
+          <th>patient</th>
+          <th>nurse</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% include 'operations/includes/partial_vaccine_applied_list.html' %}
+      </tbody>
+    </table>
+    </div>
+    <!-- THE MODAL WE WILL BE USING -->
+    <div class="modal fade" id="modal-treatment">
+      <div class="modal-dialog">
+        <div class="modal-content">
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+ <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="AddVaccineModal">Add New Vaccine</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form method='POST' action="{% url 'operations:applied_vaccine' %}" >
+          {% csrf_token %}
+          {{ form|crispy }}
+          <input type="submit" value="Apply Vaccine" class="btn btn-block btn-primary">
+          </form>
+        </div>
+        <div class="modal-footer">
+          <!-- some footer content -->
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}
+

@@ -1,0 +1,25 @@
+{% for test in queryset %}
+{% load static %}
+  <tr>
+    <th scope="row">{{ forloop.counter }}</th>
+    <td>{{ test.date }}</td>
+    <td>{{ test.patient.first_name }}</td>
+    <td>{{ test.test.name }}</td>
+    <td>{{ test.results }}</td>
+    <td>
+      <button type="button"
+              class="btn btn-primary btn-sm">
+        <i class="far fa-edit"></i> <a href="{% url 'operations:update_medical_test' test.id %}">Edit </a>
+      </button>
+
+      <button type="button"
+              class="btn btn-danger btn-sm">
+      <i class="far fa-trash-alt"></i> <a href="{% url 'operations:delete_medical_test' test.id %}" >Delete </a>
+      </button>
+    </td>
+  </tr>
+{% empty %}
+  <tr>
+    <td colspan="8" class="text-center bg-warning">No Medical Test(s) Applied</td>
+  </tr>
+{% endfor %}

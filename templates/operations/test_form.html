@@ -1,0 +1,21 @@
+{% extends 'hospital/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<form method="post" action="{% url 'operations:create_test' %}" class="">
+  {% csrf_token %}
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <h4 class="modal-title">Create a Test</h4>
+  </div>
+  <div class="col-md-6 mx-auto jumbotron">
+      {{ form|crispy }}
+    <button type="submit" class="btn btn-primary">Create Test</button>
+  </div>
+
+  </div>
+</form>
+{% endblock %}

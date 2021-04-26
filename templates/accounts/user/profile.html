@@ -1,0 +1,57 @@
+{% extends 'hospital/base.html' %}
+{% block title %}Patient Profile Page{% endblock %}
+
+{% block content %}
+<div class="content">
+
+<!--    <div class="col-md-2"></div>-->
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header bg-info text-white">
+                -Patient Detail Page
+            </div>
+            <div class="row p-3">
+                <div class="col-md-8">
+                    <table class="table table-borderless">
+                        <thead>
+                        <span class="h4"> Profile Information</span>
+                            <a class="btn btn-info btn-sm float-right" href="{% url 'accounts:user-profile-update' %}">Edit Profile</a>
+                            <hr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">Name</th>
+                                <td>{{ user.username }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Email</th>
+                                <td>{{ user.email }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Blood Group</th>
+                                <td>{{ user.patient.blood_group }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Phone</th>
+                                <td>{{ user.patient.phone_number }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Location</th>
+                                <td>{{ user.patient.location }}</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Address</th>
+                                <td>{{ user.patient.location }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md-4">
+                    <img class="img-thumbnail rounded-circle " width="250" height="250" src="{{ user.image.url }}" alt="profile-image">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

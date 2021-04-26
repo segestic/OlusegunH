@@ -1,0 +1,152 @@
+{% extends 'hospital/base.html' %}
+
+<!--{% load static %}-->
+
+<!--{% block title %} Home {{ block.super }}{% endblock title %}-->
+
+{% block content %}
+
+    <div class="content">
+            <div class="container text-center">
+                {% include "hospital/includes/success_message.html" %}
+            </div>
+    <div class="jumbotron">
+          <div class="">
+              <center><h2> {{ patient.first_name }} {{ patient.last_name }} Medical History</h2></center> <br>
+              <center><strong>Patient No - {{ patient.patient_no }} </strong><br></center>
+          </div>
+
+        <hr>
+
+<br>
+        <h2>Patient Name : {{ patient.first_name|upper }} {{patient.last_name}}</h2>
+<br>
+        <h3> Health History </h3>
+
+<hr>
+<!--   <h4> Patient bills  are</h4>-->
+<!--    {% for x in billing %}-->
+<!--  <tr>-->
+<!--    <td>{{ x.treatment.diagnosis }}</td>-->
+<!--    <td>${{ x.charges }}</td>-->
+<!--  </tr>-->
+<!--    <br>-->
+<!--        {% empty %}-->
+<!--  <tr>-->
+<!--    <td class="text-center bg-warning">No billings</td>-->
+<!--  </tr>-->
+<!--{% endfor %}-->
+<hr>
+<h4> Patient Prescriptions are: </h4>
+
+{% for x in prescriptions %}
+  <tr>
+    <td>{{ forloop.counter }}</td>
+    <td>{{ x.drug }}</td>
+    <td>{{ x.dosage }}</td>
+    <td>{{ x.quantity }}</td>
+    <td>Doctor {{ x.doctor.first_name }}</td>
+    <td>{{ x.instructions }}</td>
+  </tr>
+        {% empty %}
+  <tr>
+    <td class="text-center bg-warning">No prescriptions yet</td>
+  </tr>
+{% endfor %}
+<hr>
+
+<h4> Patient treatments are</h4>
+{% for x in treatment %}
+  <tr>
+    <td>{{ x.patient }}</td>
+    <td>{{ x.diagnosis }}</td>
+    <td>Doctor {{ x.doctor }}</td>
+  </tr>
+        {% empty %}
+  <tr>
+    <td class="text-center bg-warning">No prescriptions yet</td>
+  </tr>
+{% endfor %}
+
+<hr>
+
+
+<h4> You received the following vaccines:</h4>
+{% for x in VaccineApplied %}
+  <table>
+        <tr>
+    <td>{{ forloop.counter }}</td>
+    <td>{{ x.vaccine }}</td>
+    <td>{{ x.created_at }}</td>
+    <td>{{ x.date }}</td>
+  </tr>
+        {% empty %}
+  <tr>
+    <td class="text-center bg-warning">No vaccines yet</td>
+  </tr>
+{% endfor %}
+      </table>
+
+
+
+<hr>
+<h4>  Medical tests History:  </h4>
+
+       <div class="display_table">
+ 	<table class='table'>
+		<thead>
+          <tr>
+            <th>S/NO</th>
+            <th>Test</th>
+            <th>Result</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+{% for x in MedicalTest %}
+    <tr>
+    <td>{{ forloop.counter }}</td>
+    <td>{{ x.test }}</td>
+    <td>{{ x.results }}</td>
+    <td>{{ x.created_at }}</td>
+  </tr>
+        </tr>
+    {% empty %}
+      <tr>
+        <td colspan="7" class="text-center bg-warning">No Test(s) yet.</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+
+<hr>
+<h4> You have/had the following Prescriptions: </h4>
+{% for x in prescriptions %}
+  <tr>
+    <td>{{ forloop.counter }}</td>
+    <td>{{ x.drug }}</td>
+    <td>{{ x.description }}</td>
+    <td>{{ x.dosage }}</td>
+    <td>{{ x.quantity }}</td>
+    <td>{{ x.instructions }}</td>
+    <td>  BY Dr {{ x.doctor }} </td>
+  </tr>
+        {% empty %}
+  <tr>
+    <td class="text-center bg-warning">No Prescriptions yet</td>
+  </tr>
+{% endfor %}
+
+
+
+
+
+    </div>
+{% endblock content %}
+
+        {% block javascripts %}
+            <script src="{% static 'hospital/js/jquery.min.js' %}"></script>
+            <script src="{% static 'hospital/js/bootstrap.min.js' %}"></script>
+            <script src="{% static 'hospital/js/datatales.min.js' %}"></script>
+            <script src="{% static 'hospital/js/fullcalender.min.js' %}"></script>
+        {% endblock javascripts %}

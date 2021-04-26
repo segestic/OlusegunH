@@ -1,0 +1,80 @@
+{% extends 'hospital/base.html' %}
+
+{% block title %} Patients {{ block.super }}{% endblock title %}
+
+{% block content %}
+
+
+  <div class="container">
+    <div class="container text-center">
+      {% include "hospital/includes/success_message.html" %}
+    </div>
+    <div class="content">
+      <div id="exTab3">
+        <ul  class="nav nav-pills">
+    			<li class="active"><a  href="#1b" data-toggle="tab">Patients</a></li>
+    			<li><a href="#2b" data-toggle="tab">In-Patients</a></li>
+    			<li><a href="#3b" data-toggle="tab">Out-Patients</a></li>
+    		</ul>
+
+  			<div class="tab-content clearfix">
+  			  <div class="tab-pane active" id="1b">
+            {% include "reception/includes/patient_list.html"  %}
+  				</div>
+
+  				<div class="tab-pane" id="2b">
+            {% include "reception/includes/in_patient_list.html" %}
+  				</div>
+
+          <div class="tab-pane" id="3b">
+            {% include "reception/includes/out_patient_list.html" %}
+  				</div>
+  			</div>
+      </div>
+
+    </div>
+  </div>
+
+{% endblock content %}
+
+{% block stylesheets %}
+
+<!--body {-->
+<!--  padding : 10px ;-->
+
+<!--}-->
+
+<!--#exTab1 .tab-content {-->
+<!--  color : white;-->
+<!--  background-color: #428bca;-->
+<!--  padding : 5px 15px;-->
+<!--}-->
+
+<!--#exTab2 h3 {-->
+<!--  color : white;-->
+<!--  background-color: #428bca;-->
+<!--  padding : 5px 15px;-->
+<!--}-->
+
+<!--/* remove border radius for the tab */-->
+
+<!--#exTab1 .nav-pills > li > a {-->
+<!--  border-radius: 0;-->
+<!--}-->
+
+<!--/* change border radius for the tab , apply corners on top*/-->
+
+<!--#exTab3 .nav-pills > li > a {-->
+<!--  border-radius: 4px 4px 0 0 ;-->
+<!--}-->
+
+<!--#exTab3 .tab-content {-->
+<!--  color : white;-->
+<!--  background-color: #428bca;-->
+<!--  padding : 5px 15px;-->
+<!--}-->
+
+<!--{% endblock stylesheets %}-->
+
+
+

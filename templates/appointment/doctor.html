@@ -1,0 +1,70 @@
+{% extends 'hospital/base.html' %}
+
+{% block content %}
+
+   <div class="content">
+               {% include "hospital/includes/success_message.html" %}
+           <div class="container">
+          <div class="row min-height">
+              <div class="col-sm-12">
+                             
+                            <div class="row main_boder">
+                                <div class="col-sm-7">
+                                     <h3 class="appointmnet_list">My Appointment</h3>
+                                </div>
+                                <div class="col-sm-5">
+                                      <form class="form-inline my-2 my-lg-0" method="GET" action="">
+                                          <input class="form-control mr-sm-2" type="text" name="q" placeholder="Search Name/Date" placeholder="Search With Name" aria-label="Search">
+                                          <button class="btn btn-outline-success my-2 my-sm-0" type="submit" value="Search">Search</button>
+                                       </form>
+
+                                </div>
+ 
+                            </div>
+                             
+                             <table class="table">
+                                 <thead>
+                                  <tr>
+                                    <th scope="col">Appointment With</th>
+                                    <th scope="col">Date</th>
+                                    <th scope="col">Time</th>
+                                    <th scope="col">Room Number</th>
+                                    
+                                  </tr>
+                                </thead>{% for appoint in query %}
+                                {% if appoint.booked != False %}
+   
+                                <tbody>
+                                  <tr>
+                                    <th scope="row">{{appoint.appointment_with}}</th>
+                                          <td>{{appoint.appointment.date}}</td>
+                                          <td>{{appoint.appointment.time_start}} - {{appoint.appointment.time_end}}</td>
+                                          <td>{{appoint.appointment.room_number}}</td>
+                                  </tr>{% endif %}
+                                </tbody>{% endfor %}
+                            </table>
+                                   
+              </div>
+       
+          </div>
+      </div>
+      </div>
+
+      <div class="footer">
+           <div class="container">
+          <div class="row">
+              <div class="col-sm-12">
+                             Copyright 2021, Developed By ....lkjhgfghjk
+              </div>
+       
+          </div>
+      </div>
+      </div>
+
+
+
+    
+{% endblock %}
+
+
+

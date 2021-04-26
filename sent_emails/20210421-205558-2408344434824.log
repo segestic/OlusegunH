@@ -1,0 +1,42 @@
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Subject: Password reset on 127.0.0.1:8000
+From: segestic@my.com
+To: ola5@gmail.com
+Date: Wed, 21 Apr 2021 17:55:58 -0000
+Message-ID: <161902775864.4660.1832149934482031652@DESKTOP-14DNMCV>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Reset Password</title>
+</head>
+<body>
+
+<!--Reset Password-->
+<div class = "container p-5">
+<h2 class = "font-weight-bold mt-3"> Reset  Password Email </h2>
+<hr>
+
+
+You're receiving this email because you requested a password reset for your user account at 127.0.0.1:8000.
+
+Please go to the following page and choose a new password:
+
+http://127.0.0.1:8000/reset/NQ/alh3ha-14ac45b394ef3b93f51c5fd437607910/
+
+Your username, in case you’ve forgotten: ola5
+
+Thanks for using Olusegun Hospital site!
+
+The 127.0.0.1:8000 team
+
+
+
+</div>
+
+</body>
+</html>
+-------------------------------------------------------------------------------
